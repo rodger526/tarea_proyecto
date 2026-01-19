@@ -1,0 +1,149 @@
+<!-- ===== MENU PROFESOR ===== -->
+<nav class="menu navbar">
+  <div class="menu-container nav-container">
+
+    <!-- LOGO -->
+    <div class="menu-logo nav-logo" routerLink="/profesor/inicio">
+      <span>Panel Profesor</span>
+    </div>
+
+    <!-- MENU -->
+    <div class="menu-links nav-menu">
+      <a
+        routerLink="/profesor/inicio"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Inicio
+      </a>
+
+      <a
+        routerLink="/profesor/solicitudes"
+        routerLinkActive="active"
+      >
+        Solicitudes
+      </a>
+
+      <!-- ACEPTACIÓN -->
+      <a
+        routerLink="/profesor/aceptacion"
+        routerLinkActive="active"
+      >
+        Aceptación
+      </a>
+
+      <!-- DETALLE -->
+      <a
+        routerLink="/profesor/detalles"
+        routerLinkActive="active"
+      >
+        Detalles
+      </a>
+
+      <a
+        routerLink="/profesor/historial"
+        routerLinkActive="active"
+      >
+        Historial
+      </a>
+    </div>
+
+    <!-- USUARIO -->
+    <div class="menu-user nav-user">
+      <span>Profesor Admin</span>
+      <button class="btn-logout" (click)="cerrarSesion()">
+        Cerrar sesión
+      </button>
+    </div>
+
+  </div>
+</nav>
+
+<!-- ========= CONTENIDO ========= -->
+<main class="page-container">
+
+  <!-- HEADER -->
+  <header class="page-header">
+    <h1>Detalle de Solicitud</h1>
+    <p class="subtitle">
+      Revisión completa de la solicitud del estudiante
+    </p>
+  </header>
+
+  <!-- Datos del estudiante -->
+  <section class="card">
+    <h2>Datos del Estudiante</h2>
+
+    <div class="grid">
+      <div>
+        <label>Nombre completo</label>
+        <input type="text" [value]="solicitud.nombre" readonly>
+      </div>
+
+      <div>
+        <label>Cédula</label>
+        <input type="text" [value]="solicitud.cedula" readonly>
+      </div>
+
+      <div>
+        <label>Carrera</label>
+        <input type="text" [value]="solicitud.carrera" readonly>
+      </div>
+
+      <div>
+        <label>Semestre</label>
+        <input type="text" [value]="solicitud.semestre" readonly>
+      </div>
+    </div>
+  </section>
+
+  <!-- Datos de la beca -->
+  <section class="card">
+    <h2>Información de la Beca</h2>
+
+    <div class="grid">
+      <div>
+        <label>Tipo de beca</label>
+        <input type="text" [value]="solicitud.tipoBeca" readonly>
+      </div>
+
+      <div>
+        <label>Monto solicitado</label>
+        <input type="text" [value]="solicitud.monto" readonly>
+      </div>
+
+      <div class="full">
+        <label>Motivo</label>
+        <textarea readonly>{{ solicitud.motivo }}</textarea>
+      </div>
+    </div>
+  </section>
+
+  <!-- Acciones -->
+  <section class="card acciones">
+    <h2>Acciones del Profesor</h2>
+
+    <textarea
+      placeholder="Observaciones (opcional)"
+      [(ngModel)]="observacion">
+    </textarea>
+
+    <div class="buttons">
+      <button class="btn-success" (click)="aprobar()">
+        Aprobar
+      </button>
+
+      <button class="btn-danger" (click)="rechazar()">
+        Rechazar
+      </button>
+
+      <button
+        class="btn-secondary"
+        routerLink="/profesor/solicitudes"
+      >
+        Volver
+      </button>
+    </div>
+  </section>
+
+</main>

@@ -1,0 +1,90 @@
+<!-- HEADER GLOBAL -->
+<app-menu-profesor></app-menu-profesor>
+
+<main class="page-container">
+
+  <!-- ENCABEZADO -->
+  <section class="page-header">
+    <h1>Solicitudes de Becas</h1>
+    <p>
+      Gestión y seguimiento de solicitudes registradas por los estudiantes.
+    </p>
+  </section>
+
+  <!-- ACCIONES PRINCIPALES -->
+  <div class="page-actions">
+
+    <!-- CREAR SOLICITUD -->
+    <button
+      class="btn-primary"
+      routerLink="/profesor/crear-solicitud"
+    >
+      + Nueva solicitud
+    </button>
+
+    <!-- ACEPTACIÓN -->
+    <button
+      class="btn-secondary"
+      routerLink="/profesor/aceptacion"
+    >
+      Ir a aceptación
+    </button>
+
+  </div>
+
+  <!-- TABLA -->
+  <section class="table-container">
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Estudiante</th>
+          <th>Carrera</th>
+          <th>Tipo de beca</th>
+          <th>Promedio</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <tr *ngFor="let s of solicitudes">
+          <td>{{ s.codigo }}</td>
+          <td>{{ s.nombre }}</td>
+          <td>{{ s.carrera }}</td>
+          <td>{{ s.tipoBeca }}</td>
+          <td>{{ s.promedio }}</td>
+
+          <td>
+            <span
+              class="badge"
+              [ngClass]="estadoClase(s.estado)"
+            >
+              {{ s.estado }}
+            </span>
+          </td>
+
+          <td class="actions">
+            <button
+              class="btn-secondary"
+              (click)="verDetalle(s.id)"
+            >
+              Ver detalle
+            </button>
+          </td>
+        </tr>
+
+        <tr *ngIf="solicitudes.length === 0">
+          <td colspan="7" class="empty">
+            No existen solicitudes registradas
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+
+  </section>
+
+</main>

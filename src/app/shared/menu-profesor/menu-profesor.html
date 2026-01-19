@@ -1,0 +1,47 @@
+<nav class="navbar">
+  <div class="nav-container">
+
+    <!-- LOGO / SISTEMA -->
+    <div class="nav-logo" routerLink="/profesor/inicio">
+      <span>Sistema de Becas</span>
+    </div>
+
+    <!-- MENÚ PRINCIPAL -->
+    <div class="nav-menu">
+
+      <!-- ===== PROFESOR ===== -->
+      <a
+        routerLink="/profesor/inicio"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Profesor
+      </a>
+
+      <a
+        routerLink="/profesor/solicitudes"
+        routerLinkActive="active"
+      >
+        Solicitudes
+      </a>
+
+      <a
+        routerLink="/profesor/historial"
+        routerLinkActive="active"
+      >
+        Historial
+      </a>
+
+     
+    </div>
+
+    <!-- USUARIO -->
+    <div class="nav-user">
+      <span>Rol: Profesor</span>
+      <button class="btn-logout" (click)="cerrarSesion()">
+        Cerrar sesión
+      </button>
+    </div>
+
+  </div>
+</nav>

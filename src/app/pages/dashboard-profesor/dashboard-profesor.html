@@ -1,0 +1,150 @@
+<!-- ===== NAVBAR PROFESOR ===== -->
+<nav class="navbar">
+  <div class="nav-container">
+
+    <!-- LOGO -->
+    <div class="nav-logo" routerLink="/profesor/inicio">
+      <span>Panel Profesor</span>
+    </div>
+
+    <!-- MENU -->
+    <div class="nav-menu">
+      <a
+        routerLink="/profesor/inicio"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Inicio
+      </a>
+
+      <a
+        routerLink="/profesor/solicitudes"
+        routerLinkActive="active"
+      >
+        Solicitudes
+      </a>
+
+      <!-- NUEVO: ACEPTACIÓN -->
+      <a
+        routerLink="/profesor/aceptacion"
+        routerLinkActive="active"
+      >
+        Aceptación
+      </a>
+
+      <a
+        routerLink="/profesor/historial"
+        routerLinkActive="active"
+      >
+        Historial
+      </a>
+    </div>
+
+    <!-- USUARIO -->
+    <div class="nav-user">
+      <span>Profesor Admin</span>
+      <button class="btn-logout" (click)="cerrarSesion()">
+        Cerrar sesión
+      </button>
+    </div>
+
+  </div>
+</nav>
+
+<!-- ===== CONTENIDO ===== -->
+<main class="page-container">
+
+  <!-- HEADER -->
+  <div class="page-header">
+    <h1>Dashboard</h1>
+    <p class="subtitle">
+      Resumen general de las solicitudes de beca
+    </p>
+  </div>
+
+  <!-- ===== TARJETAS ===== -->
+  <div class="cards-grid">
+
+    <div class="info-card">
+      <label>Total Solicitudes</label>
+      <h2>{{ total }}</h2>
+    </div>
+
+    <div class="info-card">
+      <label>Aprobadas</label>
+      <h2>{{ aprobadas }}</h2>
+    </div>
+
+    <div class="info-card">
+      <label>Rechazadas</label>
+      <h2>{{ rechazadas }}</h2>
+    </div>
+
+    <div class="info-card">
+      <label>Pendientes</label>
+      <h2>{{ pendientes }}</h2>
+    </div>
+
+  </div>
+
+  <!-- ===== ACCIÓN PRINCIPAL ===== -->
+  <section class="acciones">
+    <button
+      class="btn-primario"
+      type="button"
+      routerLink="/profesor/aceptacion"
+    >
+      Ir a aceptación de solicitudes
+    </button>
+  </section>
+
+  <!-- ===== ÚLTIMAS SOLICITUDES ===== -->
+  <section>
+
+    <h2 class="section-title">Últimas solicitudes</h2>
+
+    <div class="table-container">
+      <table class="solicitudes-table">
+
+        <thead>
+          <tr>
+            <th>CÓDIGO</th>
+            <th>ESTUDIANTE</th>
+            <th>BECA</th>
+            <th>ESTADO</th>
+            <th>FECHA</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let s of ultimasSolicitudes">
+            <td>{{ s.codigo }}</td>
+            <td>{{ s.estudiante }}</td>
+            <td>{{ s.tipoBeca }}</td>
+            <td>
+              <span
+                class="badge"
+                [ngClass]="{
+                  'badge-approved': s.estado === 'Aprobada',
+                  'badge-review': s.estado === 'Pendiente'
+                }"
+              >
+                {{ s.estado }}
+              </span>
+            </td>
+            <td>{{ s.fecha }}</td>
+          </tr>
+
+          <tr *ngIf="ultimasSolicitudes.length === 0">
+            <td colspan="5">
+              No hay solicitudes registradas
+            </td>
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+
+  </section>
+
+</main>

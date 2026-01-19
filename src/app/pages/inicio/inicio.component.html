@@ -1,0 +1,146 @@
+<!-- ========= BARRA DE NAVEGACIÓN ========= -->
+<nav class="navbar">
+  <div class="nav-container">
+
+    <!-- LOGO -->
+    <div class="nav-logo" routerLink="/estudiante/inicio">
+      <img src="assets/img/logo.png" alt="ULEAM">
+      <span>ULEAM</span>
+    </div>
+
+    <!-- MENÚ -->
+    <div class="nav-menu">
+      <a
+        routerLink="/estudiante/inicio"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Inicio
+      </a>
+
+      <a
+        routerLink="/estudiante/solicitudes"
+        routerLinkActive="active"
+      >
+        Solicitudes
+      </a>
+
+      <a
+        routerLink="/estudiante/becas"
+        routerLinkActive="active"
+      >
+        Becas
+      </a>
+
+      <a
+        routerLink="/estudiante/solicitud-beca"
+        routerLinkActive="active"
+      >
+        Solicitud de beca
+      </a>
+
+      <a
+        routerLink="/estudiante/perfil"
+        routerLinkActive="active"
+      >
+        Perfil
+      </a>
+    </div>
+
+    <!-- USUARIO -->
+    <div class="nav-user">
+      <span>{{ usuarioSesion }}</span>
+      <img src="assets/img/avatar.png" alt="Usuario" class="avatar">
+      <button class="btn-logout" (click)="cerrarSesion()">
+        Cerrar sesión
+      </button>
+    </div>
+
+  </div>
+</nav>
+
+<!-- ========= CONTENIDO ========= -->
+<main class="page-container">
+
+  <!-- ENCABEZADO -->
+  <header class="page-header">
+    <h1>Bienvenido al Sistema de Becas</h1>
+    <p>Gestiona todas tus solicitudes de becas en un solo lugar</p>
+  </header>
+
+  <!-- ========= TARJETAS ========= -->
+  <section class="cards-grid" [class.visible]="mostrarCards">
+
+    <div class="info-card">
+      <label>Becas postuladas</label>
+      <h2>{{ estadisticas.becasPostuladas }}</h2>
+    </div>
+
+    <div class="info-card">
+      <label>Valor becas obtenidas</label>
+      <h2>${{ estadisticas.valorBecasObtenidas }}</h2>
+    </div>
+
+    <div class="info-card">
+      <label>Promedio actual</label>
+      <h2>{{ estadisticas.promedioActual }}</h2>
+    </div>
+
+  </section>
+
+  <!-- ========= LISTADO ========= -->
+  <section>
+    <h2 class="section-title">Mis becas actuales</h2>
+
+    <div class="becas-list">
+
+      <article
+        class="beca-card"
+        *ngFor="let beca of becasActuales"
+        [ngClass]="{
+          'beca-aprobada': beca.estado === 'APROBADA',
+          'beca-revision': beca.estado === 'EN REVISIÓN'
+        }"
+      >
+
+        <div class="beca-header">
+          <h3>{{ beca.nombre }}</h3>
+          <span class="beca-status">{{ beca.estado }}</span>
+        </div>
+
+        <div class="beca-info">
+          <p><strong>Periodo:</strong> {{ beca.periodo }}</p>
+          <p><strong>Monto cubierto:</strong> {{ beca.monto }}</p>
+          <p><strong>Periodo académico:</strong> {{ beca.periodoAcademico }}</p>
+        </div>
+
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ========= BOTONES ========= -->
+  <section class="action-buttons">
+    <button
+      class="btn-secondary"
+      (click)="verSolicitudes()"
+    >
+      Ver solicitudes
+    </button>
+
+    <button
+      class="btn-primary"
+      (click)="anadirSolicitud()"
+    >
+      Añadir solicitud
+    </button>
+
+    <button
+      class="btn-secondary"
+      (click)="actualizarPerfil()"
+    >
+      Actualizar perfil
+    </button>
+  </section>
+
+</main>

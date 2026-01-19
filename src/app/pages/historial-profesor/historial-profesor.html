@@ -1,0 +1,104 @@
+<!-- ===== NAVBAR PROFESOR ===== -->
+<nav class="navbar">
+  <div class="nav-container">
+
+    <!-- LOGO -->
+    <div class="nav-logo" routerLink="/profesor/inicio">
+      <span>Panel Profesor</span>
+    </div>
+
+    <!-- MENU -->
+    <div class="nav-menu">
+      <a
+        routerLink="/profesor/inicio"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Inicio
+      </a>
+
+      <a
+        routerLink="/profesor/solicitudes"
+        routerLinkActive="active"
+      >
+        Solicitudes
+      </a>
+
+      <a
+        routerLink="/profesor/historial"
+        routerLinkActive="active"
+      >
+        Historial
+      </a>
+    </div>
+
+    <!-- USUARIO -->
+    <div class="nav-user">
+      <span>Profesor Admin</span>
+      <button class="btn-logout" (click)="cerrarSesion()">
+        Cerrar sesión
+      </button>
+    </div>
+
+  </div>
+</nav>
+
+<!-- ===== CONTENIDO ===== -->
+<main class="page-container">
+
+  <!-- HEADER -->
+  <div class="page-header">
+    <h1>Historial de Acciones</h1>
+    <p class="subtitle">
+      Registro de todas las decisiones tomadas sobre solicitudes de beca
+    </p>
+  </div>
+
+  <!-- TABLA -->
+  <div class="table-container">
+    <table class="solicitudes-table">
+
+      <thead>
+        <tr>
+          <th>CÓDIGO</th>
+          <th>ESTUDIANTE</th>
+          <th>TIPO DE BECA</th>
+          <th>ESTADO</th>
+          <th>FECHA</th>
+          <th>OBSERVACIÓN</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let item of historial">
+          <td>{{ item.codigo }}</td>
+          <td>{{ item.estudiante }}</td>
+          <td>{{ item.tipoBeca }}</td>
+
+          <td>
+            <span
+              class="badge"
+              [ngClass]="{
+                'badge-approved': item.estado === 'Aprobada',
+                'badge-rejected': item.estado === 'Rechazada'
+              }"
+            >
+              {{ item.estado }}
+            </span>
+          </td>
+
+          <td>{{ item.fecha }}</td>
+          <td>{{ item.observacion }}</td>
+        </tr>
+
+        <tr *ngIf="historial.length === 0">
+          <td colspan="6" class="empty">
+            No existen acciones registradas
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+
+</main>

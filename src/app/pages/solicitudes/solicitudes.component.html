@@ -1,0 +1,147 @@
+<!-- ========= BARRA DE NAVEGACIÓN ========= -->
+<nav class="navbar">
+  <div class="nav-container">
+
+    <!-- LOGO -->
+    <div class="nav-logo" routerLink="/estudiante/inicio">
+      <img src="assets/img/logo.png" alt="ULEAM">
+      <span>ULEAM</span>
+    </div>
+
+    <!-- MENÚ -->
+    <div class="nav-menu">
+      <a
+        routerLink="/estudiante/inicio"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Inicio
+      </a>
+
+      <a
+        routerLink="/estudiante/solicitudes"
+        routerLinkActive="active"
+      >
+        Solicitudes
+      </a>
+
+      <a
+        routerLink="/estudiante/becas"
+        routerLinkActive="active"
+      >
+        Becas
+      </a>
+
+      <a
+        routerLink="/estudiante/solicitud-beca"
+        routerLinkActive="active"
+      >
+        Solicitud de beca
+      </a>
+
+      <a
+        routerLink="/estudiante/perfil"
+        routerLinkActive="active"
+      >
+        Perfil
+      </a>
+    </div>
+
+    <!-- Usuario -->
+    <div class="nav-user">
+      <span>Muñoz Molina Rodger</span>
+      <img src="img/avatar.png" alt="Usuario" class="avatar">
+      <button class="btn-logout" (click)="logout()">Cerrar sesión</button>
+    </div>
+
+  </div>
+</nav>
+
+<!-- Contenido principal -->
+<div class="page-container">
+
+  <!-- Encabezado -->
+  <div class="solicitudes-header">
+    <div class="tabs">
+      <button class="tab active">Mis Solicitudes</button>
+      <button class="tab" routerLink="/perfil">Mi perfil</button>
+    </div>
+  </div>
+
+  <h1>Mis Solicitudes</h1>
+  <p class="subtitle">Visualiza y descarga tus solicitudes de beca</p>
+
+  <!-- Tabla -->
+  <div class="table-container">
+    <table class="solicitudes-table">
+      <thead>
+        <tr>
+          <th>CÓDIGO</th>
+          <th>TIPO DE BECA</th>
+          <th>FECHA</th>
+          <th>ESTADO</th>
+          <th>MONTO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>SOL-2025-002</td>
+          <td>Beca de Investigación</td>
+          <td>12-Oct-2025</td>
+          <td><span class="badge badge-review">En revisión</span></td>
+          <td>$700</td>
+        </tr>
+
+        <tr>
+          <td>SOL-2025-001</td>
+          <td>Beca Socioeconómica</td>
+          <td>20-May-2025</td>
+          <td><span class="badge badge-approved">Aprobada</span></td>
+          <td>$600</td>
+        </tr>
+
+        <tr>
+          <td>SOL-2023-003</td>
+          <td>Beca de Investigación</td>
+          <td>01-Mar-2024</td>
+          <td><span class="badge badge-finalizada">Finalizada</span></td>
+          <td>$700</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Historial -->
+  <div class="section-title">Historial de Becas</div>
+
+  <div class="historial-container">
+
+    <div class="historial-item">
+      <div class="historial-date">29-OCT-2023</div>
+      <div class="historial-info">
+        <p>Documentación N°756.5</p>
+        <p>Se aceptó la entrega de 5 hojas, la aprobación está en proceso</p>
+      </div>
+      <div class="historial-date">16-FEB-2020</div>
+    </div>
+
+    <div class="historial-item">
+      <div class="historial-date">29-JUN-2020</div>
+      <div class="historial-info">
+        <p>Documentación N°756.5</p>
+        <p>Solicitud registrada correctamente</p>
+      </div>
+      <div class="historial-date">16-FEB-2020</div>
+    </div>
+
+    <div class="historial-item">
+      <div class="historial-date">29-AGO-2022</div>
+      <div class="historial-info">
+        <p>Re-Evaluación</p>
+        <p>Se requieren documentos físicos</p>
+      </div>
+      <div class="historial-date">26-AGO-2020</div>
+    </div>
+
+  </div>
+</div>

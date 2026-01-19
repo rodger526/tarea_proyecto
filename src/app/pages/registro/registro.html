@@ -1,0 +1,300 @@
+<!-- ========= BARRA DE NAVEGACIÓN ========= -->
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="nav-logo">
+      <img src="assets/img/logo.png" alt="ULEAM">
+      <span>ULEAM</span>
+    </div>
+  </div>
+</nav>
+
+<!-- ========= CONTENEDOR REGISTRO ========= -->
+<main class="registro-container">
+  <section class="registro-box">
+
+    <h1>Registro de Estudiantes para el Sistema de Becas</h1>
+
+    <form (ngSubmit)="registrar()" novalidate>
+
+      <!-- ========= DATOS PERSONALES ========= -->
+      <h3>Datos personales</h3>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="nombres">Nombres</label>
+          <input id="nombres" type="text" [(ngModel)]="formData.nombres" name="nombres" required>
+        </div>
+
+        <div class="form-group">
+          <label for="apellidos">Apellidos</label>
+          <input id="apellidos" type="text" [(ngModel)]="formData.apellidos" name="apellidos" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="tipoDoc">Tipo de documento</label>
+          <select id="tipoDoc" [(ngModel)]="formData.tipoDoc" name="tipoDoc" required>
+            <option value="">Seleccione</option>
+            <option value="cedula">Cédula</option>
+            <option value="pasaporte">Pasaporte</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="numeroDoc">Número de documento</label>
+          <input id="numeroDoc" type="text" [(ngModel)]="formData.numeroDoc" name="numeroDoc" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="genero">Género</label>
+          <select id="genero" [(ngModel)]="formData.genero" name="genero">
+            <option value="">Seleccione</option>
+            <option>Masculino</option>
+            <option>Femenino</option>
+            <option>Otro</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="fechaNacimiento">Fecha de nacimiento</label>
+          <input id="fechaNacimiento" type="date" [(ngModel)]="formData.fechaNacimiento" name="fechaNacimiento">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="estadoCivil">Estado civil</label>
+          <select id="estadoCivil" [(ngModel)]="formData.estadoCivil" name="estadoCivil">
+            <option value="">Seleccione</option>
+            <option>Soltero</option>
+            <option>Casado</option>
+            <option>Divorciado</option>
+            <option>Viudo</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- ========= INFORMACIÓN DE CONTACTO ========= -->
+      <h3>Información de contacto</h3>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="correoInst">Correo institucional</label>
+          <input
+            id="correoInst"
+            type="email"
+            [(ngModel)]="formData.correoInst"
+            name="correoInst"
+            placeholder="usuario@uleam.edu.ec"
+            required>
+        </div>
+
+        <div class="form-group">
+          <label for="clave">Contraseña</label>
+          <input
+            id="clave"
+            type="password"
+            [(ngModel)]="formData.clave"
+            name="clave"
+            placeholder="********"
+            required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="celular">Celular</label>
+        <input id="celular" type="number" [(ngModel)]="formData.celular" name="celular" required>
+      </div>
+
+      <!-- ========= UBICACIÓN ========= -->
+      <h3>Ubicación</h3>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>País</label>
+          <input type="text" [(ngModel)]="formData.pais" name="pais" readonly>
+        </div>
+
+        <div class="form-group">
+          <label for="provincia">Provincia</label>
+          <select id="provincia" [(ngModel)]="formData.provincia" name="provincia" required>
+            <option value="">Seleccione</option>
+            <option>Azuay</option>
+            <option>Bolívar</option>
+            <option>Cañar</option>
+            <option>Carchi</option>
+            <option>Chimborazo</option>
+            <option>Cotopaxi</option>
+            <option>El Oro</option>
+            <option>Esmeraldas</option>
+            <option>Guayas</option>
+            <option>Imbabura</option>
+            <option>Loja</option>
+            <option>Los Ríos</option>
+            <option>Manabí</option>
+            <option>Morona Santiago</option>
+            <option>Napo</option>
+            <option>Orellana</option>
+            <option>Pastaza</option>
+            <option>Pichincha</option>
+            <option>Santa Elena</option>
+            <option>Santo Domingo</option>
+            <option>Sucumbíos</option>
+            <option>Tungurahua</option>
+            <option>Zamora Chinchipe</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="ciudad">Ciudad</label>
+          <input id="ciudad" type="text" [(ngModel)]="formData.ciudad" name="ciudad" required>
+        </div>
+
+        <div class="form-group">
+          <label for="direccion">Dirección</label>
+          <input id="direccion" type="text" [(ngModel)]="formData.direccion" name="direccion">
+        </div>
+      </div>
+
+      <!-- ========= INFORMACIÓN ACADÉMICA ========= -->
+      <h3>Información académica</h3>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="carrera">Carrera</label>
+          <select id="carrera" [(ngModel)]="formData.carrera" name="carrera" required>
+            <option value="">Seleccione</option>
+            <option>Tecnologías de la Información</option>
+            <option>Software</option>
+            <option>Derecho</option>
+            <option>Administración de Empresas</option>
+            <option>Contabilidad</option>
+            <option>Medicina</option>
+            <option>Enfermería</option>
+            <option>Arquitectura</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="semestre">Semestre</label>
+          <select id="semestre" [(ngModel)]="formData.semestre" name="semestre" required>
+            <option value="0">Seleccione</option>
+            <option *ngFor="let s of semestres" [value]="s">{{ s }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="promedioAcademico">Promedio académico</label>
+        <input id="promedioAcademico" type="number" step="0.01"
+               [(ngModel)]="formData.promedioAcademico"
+               name="promedioAcademico">
+      </div>
+
+      <!-- ========= INFORMACIÓN SOCIOECONÓMICA ========= -->
+      <h3>Información socioeconómica</h3>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="ingresoFamiliar">Ingreso familiar mensual ($)</label>
+          <input id="ingresoFamiliar" type="number"
+                 [(ngModel)]="formData.ingresoFamiliar"
+                 name="ingresoFamiliar">
+        </div>
+
+        <div class="form-group">
+          <label for="numeroDependientes">Número de dependientes</label>
+          <input id="numeroDependientes" type="number"
+                 [(ngModel)]="formData.numeroDependientes"
+                 name="numeroDependientes">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="tipoVivienda">Tipo de vivienda</label>
+          <select id="tipoVivienda" [(ngModel)]="formData.tipoVivienda" name="tipoVivienda">
+            <option value="">Seleccione</option>
+            <option>Propia</option>
+            <option>Arrendada</option>
+            <option>Prestada</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="viviendaPropia">¿Vivienda propia?</label>
+          <select id="viviendaPropia" [(ngModel)]="formData.viviendaPropia" name="viviendaPropia">
+            <option value="">Seleccione</option>
+            <option>Si</option>
+            <option>No</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="ocupacionPadre">Ocupación del padre</label>
+          <input id="ocupacionPadre" type="text"
+                 [(ngModel)]="formData.ocupacionPadre"
+                 name="ocupacionPadre">
+        </div>
+
+        <div class="form-group">
+          <label for="ocupacionMadre">Ocupación de la madre</label>
+          <input id="ocupacionMadre" type="text"
+                 [(ngModel)]="formData.ocupacionMadre"
+                 name="ocupacionMadre">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="poseeDiscapacidad">¿Posee discapacidad?</label>
+          <select id="poseeDiscapacidad"
+                  [(ngModel)]="formData.poseeDiscapacidad"
+                  name="poseeDiscapacidad">
+            <option value="">Seleccione</option>
+            <option>Si</option>
+            <option>No</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="porcentajeDiscapacidad">Porcentaje de discapacidad</label>
+          <input id="porcentajeDiscapacidad" type="number"
+                 [(ngModel)]="formData.porcentajeDiscapacidad"
+                 name="porcentajeDiscapacidad">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="recibeOtraBeca">¿Recibe otra beca?</label>
+        <select id="recibeOtraBeca"
+                [(ngModel)]="formData.recibeOtraBeca"
+                name="recibeOtraBeca">
+          <option value="">Seleccione</option>
+          <option>Si</option>
+          <option>No</option>
+        </select>
+      </div>
+
+      <!-- ========= BOTONES ========= -->
+      <div class="form-buttons">
+        <button type="button" class="btn-secondary" (click)="cancelar()">
+          Cancelar
+        </button>
+
+        <button type="submit" class="btn-success">
+          Guardar Registro
+        </button>
+      </div>
+
+    </form>
+
+  </section>
+</main>

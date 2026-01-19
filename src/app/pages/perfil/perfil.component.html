@@ -1,0 +1,196 @@
+<!-- ========= BARRA DE NAVEGACIÓN ========= -->
+<nav class="navbar">
+  <div class="nav-container">
+
+    <!-- LOGO -->
+    <div class="nav-logo" routerLink="/estudiante/inicio">
+      <img src="assets/img/logo.png" alt="ULEAM">
+      <span>ULEAM</span>
+    </div>
+
+    <!-- MENÚ -->
+    <div class="nav-menu">
+      <a
+        routerLink="/estudiante/inicio"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Inicio
+      </a>
+
+      <a
+        routerLink="/estudiante/solicitudes"
+        routerLinkActive="active"
+      >
+        Solicitudes
+      </a>
+
+      <a
+        routerLink="/estudiante/becas"
+        routerLinkActive="active"
+      >
+        Becas
+      </a>
+
+      <a
+        routerLink="/estudiante/solicitud-beca"
+        routerLinkActive="active"
+      >
+        Solicitud de beca
+      </a>
+
+      <a
+        routerLink="/estudiante/perfil"
+        routerLinkActive="active"
+      >
+        Perfil
+      </a>
+    </div>
+
+    <!-- Usuario -->
+    <div class="nav-user">
+      <span>{{ userName }}</span>
+      <img src="img/avatar.png" alt="Foto de perfil" class="avatar">
+      <button class="btn-logout" (click)="cerrarSesion()">Cerrar sesión</button>
+    </div>
+
+  </div>
+</nav>
+
+<!-- =========  CONTENIDO  ========= -->
+<main class="page-container">
+
+  <h1>Mi Perfil</h1>
+  <p class="subtitle">Gestiona tu información personal y académica</p>
+
+  <!-- Información personal -->
+  <section class="profile-section">
+    <h2>Información personal</h2>
+
+    <div class="profile-grid">
+      <div class="profile-field">
+        <label>Nombres</label>
+        <input type="text" [value]="usuario.nombres" readonly>
+      </div>
+
+      <div class="profile-field">
+        <label>Apellidos</label>
+        <input type="text" [value]="usuario.apellidos" readonly>
+      </div>
+
+      <div class="profile-field">
+        <label>Tipo de Documento</label>
+        <input type="text" [value]="usuario.tipoDocumento" readonly>
+      </div>
+
+      <div class="profile-field">
+        <label>N° de Documento</label>
+        <input type="text" [value]="usuario.numeroDocumento" readonly>
+      </div>
+
+      <div class="profile-field">
+        <label>Correo Institucional</label>
+        <input type="email" [value]="usuario.correoInstitucional" readonly>
+      </div>
+
+      <div class="profile-field">
+        <label>Celular</label>
+        <input type="text" [value]="usuario.celular" readonly>
+      </div>
+
+      <div class="profile-field">
+        <label>País</label>
+        <input type="text" [value]="usuario.pais" readonly>
+      </div>
+
+      <div class="profile-field">
+        <label>Provincia</label>
+        <input type="text" [value]="usuario.provincia" readonly>
+      </div>
+
+      <div class="profile-field full-width">
+        <label>Dirección</label>
+        <input type="text" [value]="usuario.direccion" readonly>
+      </div>
+    </div>
+  </section>
+
+  <!-- Información académica -->
+  <section class="profile-section">
+    <h2>Información académica</h2>
+
+    <div class="profile-grid">
+      <div class="profile-field">
+        <label>Facultad</label>
+        <input type="text" [value]="usuario.facultad" readonly>
+      </div>
+
+      <div class="profile-field">
+        <label>Carrera</label>
+        <input type="text" [value]="usuario.carrera" readonly>
+      </div>
+
+      <div class="profile-field">
+        <label>Nivel</label>
+        <input type="text" [value]="usuario.nivel" readonly>
+      </div>
+
+      <div class="profile-field">
+        <label>Semestre</label>
+        <input type="text" [value]="usuario.semestre" readonly>
+      </div>
+
+      <div class="profile-field">
+        <label>Promedio</label>
+        <input type="text" [value]="usuario.promedio" readonly>
+      </div>
+
+      <div class="profile-field">
+        <label>Créditos aprobados</label>
+        <input type="text" [value]="usuario.creditosAprobados" readonly>
+      </div>
+    </div>
+  </section>
+
+  <!-- Foto -->
+  <section class="profile-section">
+    <h2>Cambiar foto de perfil</h2>
+
+    <div class="profile-photo-section">
+      <img
+        [src]="fotoPreview || 'img/avatar.png'"
+        alt="Foto actual"
+        class="profile-photo"
+      >
+
+      <div class="photo-actions">
+        <input type="file" accept="image/*" (change)="previewFoto($event)">
+        <button class="btn-primary" (click)="subirFoto()">Subir nueva foto</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contraseña -->
+  <section class="profile-section">
+    <h2>Cambiar contraseña</h2>
+
+    <div class="profile-grid">
+      <div class="profile-field full-width">
+        <input type="password" placeholder="Contraseña actual" [(ngModel)]="passActual">
+      </div>
+
+      <div class="profile-field">
+        <input type="password" placeholder="Nueva contraseña" [(ngModel)]="passNueva">
+      </div>
+
+      <div class="profile-field">
+        <input type="password" placeholder="Confirmar contraseña" [(ngModel)]="passConfirm">
+      </div>
+    </div>
+  </section>
+
+  <div class="profile-actions">
+    <button class="btn-primary" (click)="guardarPerfil()">Guardar cambios</button>
+  </div>
+
+</main>

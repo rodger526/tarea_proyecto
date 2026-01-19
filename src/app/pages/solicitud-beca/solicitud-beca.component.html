@@ -1,0 +1,187 @@
+<!-- ========= BARRA DE NAVEGACIÓN ========= -->
+<nav class="navbar">
+  <div class="nav-container">
+
+    <!-- LOGO -->
+    <div class="nav-logo" routerLink="/estudiante/inicio">
+      <img src="assets/img/logo.png" alt="ULEAM">
+      <span>ULEAM</span>
+    </div>
+
+    <!-- MENÚ -->
+    <div class="nav-menu">
+      <a
+        routerLink="/estudiante/inicio"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Inicio
+      </a>
+
+      <a
+        routerLink="/estudiante/solicitudes"
+        routerLinkActive="active"
+      >
+        Solicitudes
+      </a>
+
+      <a
+        routerLink="/estudiante/becas"
+        routerLinkActive="active"
+      >
+        Becas
+      </a>
+
+      <a
+        routerLink="/estudiante/solicitud-beca"
+        routerLinkActive="active"
+      >
+        Solicitud de beca
+      </a>
+
+      <a
+        routerLink="/estudiante/perfil"
+        routerLinkActive="active"
+      >
+        Perfil
+      </a>
+    </div>
+
+    <div class="nav-user">
+      <span>Muñoz Molina Rodger</span>
+      <img src="assets/img/avatar.png" alt="Usuario" class="avatar">
+      <button class="btn-logout" (click)="cerrarSesion()">Cerrar sesión</button>
+    </div>
+
+  </div>
+</nav>
+
+<div class="page-container">
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab" (click)="irABecas()">Becas Disponibles</button>
+    <button class="tab active">Mi solicitud</button>
+    <button class="tab" (click)="irAPerfil()">Mi perfil</button>
+  </div>
+
+  <h1>Solicitud de Beca</h1>
+  <p class="subtitle">Completa el formulario de solicitud para la beca académica</p>
+
+  <div class="solicitud-beca-box">
+
+    <div class="alert alert-warning">
+      <strong>Importante:</strong> Podrás solicitar esta oportunidad académica después de haber finalizado el proceso. Asegúrate de lo siguiente:
+    </div>
+
+    <div class="requirements-box">
+      <h3>Información Académica</h3>
+      <ul>
+        <li>Notas no actualizadas</li>
+        <li>Faltas no actualizadas</li>
+        <li>Datos personales no actualizados</li>
+        <li>Dirección no actualizada</li>
+      </ul>
+    </div>
+
+    <div class="requirements-box">
+      <h3>Ejercicios de Beca</h3>
+      <ul>
+        <li>Obligación de ayuda obligatoria</li>
+        <li>Dedicación mínima 5 horas semana</li>
+      </ul>
+    </div>
+
+    <div class="requirements-box blue">
+      <h3>Has solicitado una Beca de Prestación Académica</h3>
+      <p><strong>Beneficios:</strong></p>
+      <ul>
+        <li>Un eje puede ser: "El Beneficio Académico" (B.P.A)</li>
+        <li>El tiempo promedio debe ser superior 0.7/10</li>
+      </ul>
+    </div>
+
+    <div class="section-title">Información personal</div>
+    <div class="info-grid">
+      <div class="info-item">
+        <label>Apellido Paterno</label>
+        <p>Muñoz</p>
+      </div>
+      <div class="info-item">
+        <label>Tipo de Admisión</label>
+        <p>Regular</p>
+      </div>
+      <div class="info-item">
+        <label>Entidad bancaria</label>
+        <p>Depósito</p>
+      </div>
+    </div>
+
+    <!-- Tipos de beca -->
+    <div class="form-group">
+      <label>Tipos de beca a los que desea postularse</label>
+      <div class="beca-box">
+
+        <label class="check-row">
+          <input type="checkbox"> Beca de Inclusión Social
+        </label>
+        <label class="check-row">
+          <input type="checkbox"> Beca de Desarrollo Estudiantil
+        </label>
+        <label class="check-row">
+          <input type="checkbox"> Beca de Excelencia Académica
+        </label>
+        <label class="check-row">
+          <input type="checkbox"> Ayuda Socioeconómica
+        </label>
+        <label class="check-row">
+          <input type="checkbox"> Beca de excelencia academica
+        </label>
+        <label class="check-row">
+          <input type="checkbox"> Beca de investigación
+        </label>
+        <label class="check-row">
+          <input type="checkbox"> Ayuda de movilidad
+        </label>
+        <label class="check-row">
+          <input type="checkbox"> Beca Deportiva
+        </label>
+        <label class="check-row">
+          <input type="checkbox"> Beca de postgrado internacional
+        </label>
+
+      </div>
+    </div>
+
+    <!-- Documentos -->
+    <div class="section-title">Documentos Requeridos</div>
+
+    <div class="documents-section">
+
+      <div class="document-upload">
+        <div class="upload-icon">📄</div>
+        <p>Certificado de matrícula vigente</p>
+        <input type="file" hidden #cert (change)="subirArchivo('certificado', $event)">
+        <button class="btn-upload" (click)="cert.click()">SUBIR ARCHIVO</button>
+      </div>
+
+      <div class="document-upload">
+        <div class="upload-icon">📄</div>
+        <p>Hoja del matriculado</p>
+        <input type="file" hidden #hoja (change)="subirArchivo('hoja', $event)">
+        <button class="btn-upload" (click)="hoja.click()">SUBIR ARCHIVO</button>
+      </div>
+
+    </div>
+
+    <div class="alert alert-info">
+      Recuerda que debes presionar el botón "GUARDAR" en la sección de la modalidad de pago para poder validar la información ingresada...
+    </div>
+
+    <div class="form-buttons">
+      <button class="btn-secondary" (click)="cancelar()">Cancelar</button>
+      <button class="btn-primary" (click)="enviarSolicitud()">ENVIAR SOLICITUD</button>
+    </div>
+
+  </div>
+</div>
