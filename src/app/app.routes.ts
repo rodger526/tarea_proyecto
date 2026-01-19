@@ -65,7 +65,7 @@ export const routes: Routes = [
       { path: '', redirectTo: 'inicio', pathMatch: 'full' },
       { path: 'inicio', component: DashboardProfesorComponent },
       { path: 'solicitudes', component: ListaSolicitudesProfesorComponent },
-      { path: 'detalle/:id', component: DetalleSolicitudProfesorComponent },
+      { path: 'detalle/:id', component: DetalleSolicitudProfesorComponent,data: { prerender: false }},
       { path: 'aceptacion', component: AceptacionComponent },
       { path: 'historial', component: HistorialProfesorComponent }
     ]
